@@ -1,0 +1,2923 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Vero/Falso e Scelta Multipla</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .quiz-container { max-width: 700px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        .question { font-weight: bold; margin-top: 20px; }
+        .result { margin-top: 20px; font-weight: bold; }
+        .correct { background-color: #c8e6c9; }  /* Verde */
+        .wrong { background-color: #ffcdd2; }    /* Rosso */
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2>Quiz Vero/Falso e Scelta Multipla</h2>
+        <button onclick="generateQuiz()">Rigenera Domande</button>
+        <div id="quiz"></div>
+        <button onclick="checkAnswers()">Verifica Risposte</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        const questions = [
+            /* Qui verranno caricate le 30 domande casuali */
+        ];
+
+        // Simulazione di domande importate (da sostituire con il tuo JSON completo)
+        const allQuestions = [
+            {
+        type: "truefalse",
+        question: "Lo scopo di un computer è elaborare dati per trasformarli in informazioni.",
+        options: [
+            "Vero",
+            "Falso"
+        ],
+        correct: [
+            "Vero"
+        ]
+    },
+  
+  { 
+  type: "truefalse", 
+  question: "La fase denominata Batch descrive i primi casi di utilizzo da parte delle aziende dei sistemi informativi?",
+	options: [
+            "Vero",
+            "Falso"
+        ],  
+  correct: [
+  "Falso"
+]  
+  },
+  { type: "truefalse", 
+  question: "TPS, DSS, EIS, MIS l'intruso è EIS?", 
+  options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", 
+  question: "I sistemi informativi elaborano informazioni con l'obiettivo di generare dati utili alle organizzazioni?",   options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   }, 
+  { type: "truefalse", 
+  question: "Il TCP/IP è un esempio di mezzo di trasmissione che supporta una rete informatica?",   options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", 
+  question: "Il machine learning è quel campo di studi che fornisce ai computer la capacità di apprendere dopo essere stati programmati?",   options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", 
+  question: "La rivista Wired nel 2010 ha pubblicato l'articolo 'Il web è morto', fenomeno che possiamo vedere oggi?",   options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", 
+  question:  "DDSO è un SI?",   options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   }, 
+  { type: "truefalse",
+  question:  "Instagram è un SI?",  
+  options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", 
+  question: "Il termine sistema informativo è nato con il mainframe?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", 
+  question: "Su Amazon Mechanical Turk c'è qualcuno addetto alla verifica delle operazioni che fanno gli utenti?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Il livello strategico contiene: DSS, MIS, ESS?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Parlando di digital media i principali sono: paid, social e shared media?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Il WWW nasce nel '69 con il nome di Hypertesto?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "DSS combina dati, strumenti analitici e modelli per sostenere decisioni manageriali molto strutturate ovvero quelle prese a livello operativo della piramide gerarchica?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "I dati si ottengono selezionando le conoscenze e organizzandole in un insieme coerente di significato?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Il modello di cloud computing che corrisponde al modello di pizza al ristorante è IaaS?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Attraverso il modello di business si identifica come l'azienda utilizzerà le tecnologie e i SI a supporto della propria operatività senza tuttavia descrivere quale sarà la strategia aziendale?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Crowdfunding, crowdsourcing = denaro sharing economy?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Il cyberterrorismo si riferisce al tentativo da parte dell'esercito di un Paese di compromettere i sistemi informativi di un altro Paese?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "La digital transformation riguarda solo l'aggiornamento dei sistemi informatici?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Gli ERP sono applicazioni che integrano più funzioni aziendali?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Il tagging permette agli utenti di contribuire all'accrescimento del valore dei siti web aggiungendo informazioni descrittive?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "I software di data mining analizzano grandi quantità di dati per identificare schemi e modelli predittivi?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Gli indirizzi IP identificano tutti i computer e dispositivi su internet, permettendo l'instradamento dei pacchetti dati?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Un sistema VPN utilizza un tunnel cifrato per trasmettere dati in sicurezza attraverso una rete pubblica?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "La firma digitale garantisce l'autenticazione, la non ripudiabilità e l'integrità dei messaggi?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Il valore di rete dipende direttamente dal numero di utenti?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Il machine learning è un sottoinsieme dell'intelligenza artificiale?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Il concetto di 'long tail' favorisce la produzione mainstream rispetto a prodotti di nicchia?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Il modello di business 'freemium' prevede l'offerta gratuita di una versione base di un prodotto con opzioni premium a pagamento?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Il phishing è un attacco informatico basato sulla manipolazione degli utenti per ottenere informazioni sensibili?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "I database relazionali organizzano i dati in base alla loro posizione fisica?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "L'edge computing riduce la latenza elaborando i dati vicino alla loro origine?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Il deep learning è una sottocategoria del machine learning?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Un firewall serve a proteggere una rete filtrando il traffico?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Il modello client-server prevede una relazione paritaria tra computer connessi alla rete?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "La crittografia asimmetrica utilizza la stessa chiave per cifrare e decifrare i messaggi?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Il crowdsourcing è una nuova forma di esternalizzazione che sfrutta la collaborazione degli utenti online?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "L'HTTP è un protocollo sicuro per la trasmissione di dati sensibili?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Le reti peer-to-peer sono gerarchicamente strutturate?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "La firma digitale è equivalente alla firma autografa su carta?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Il cloud computing permette di accedere a risorse informatiche on-demand?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Un database NoSQL è progettato per essere fortemente strutturato e rigido?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Il protocollo HTTPS è una versione sicura dell'HTTP?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Un indirizzo IPv6 è composto da 128 bit?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "I chatbot basati su IA possono migliorare l’interazione con i clienti?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "TPS, DSS, EIS, MIS l 'intruso è EIS?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "I sistemi informativi elaborano informazioni con l 'obiettivo di generare dati utili alle organizzazioni?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Il tpc/ip è un esempio di mezzo di trasmissione che supporta una rete informatica?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Il livello strategico contiene: DSS, MIS, ESS?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Parlando di digital media i principali sono: paid, social e shared media?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "DSS combina dati, strumenti analitici e modelli per sostenere decision manageriali molto strutturate ovvero quelle prese a livello operativa della piramide gerarchica?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "I dati si ottengono selezionando le conoscenze e organizzandole in un insieme coerente di significato?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Il modello di cloud computing che corrisponde al modello di pizza al ristorante è IaaS? ", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Attraverso il modello di business si identifica come l 'azienda utilizzerà le tecnologie e i SI a supporto della propria operatività senza tuttavia descrivere quale sarà la strategia aziendale?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "In base al concetto di coda lunga la distribuzione delle esigenze e dei desideri può essere paragonata a una distribuzione statistica favorendo la produzione mainstream?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Tra le memorie centrali si possono annoverare RAM, ROM e hard disk?","options": [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Il phishing è un tipo di malware?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Il protocollo di comunicazione di una rete informatica è rappresentato dal mezzo trasmissivo della rete stessa?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Con l 'acronimo SEM ci si riferisce a una serie di attività volte a migliorare il posizionamento di un sito tra i risultati organici di una ricerca, attraverso l 'ottimizzazione dei contenuti e dei codici delle sue pagine?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "La RAM può essere sostituita agilmente da un 'altra memoria centrale ovvero la memoria di massa?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "La prima generazione di telefonia cellulare prevede l 'uso del segnale digitale e consente di trasmettere solo voce?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Data base e data mining sono sinonimi e consentono la raccolta e l 'archiviazione organizzata dei dati correlati e strutturati?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "La struttura client server è quando dei computer sono collegati al mainframe?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "I sistemi TPS sono molto utilizzati nelle aeree di marketing delle aziende, dal momento che permettono la costruzione di modelli per le analisi di mercato?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Raccogliendo e poi trasmettendo segretamente a terze parti alcune informazioni inerenti le attività che un utente compie nel web, i ransomware costituiscono una delle più note tipologie di spyware?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Attraverso la firma digitale non è possibile accettare la provenienza di un messaggio a meno che mittente e destinatario non si siano preventivamente scambiati le chiavi?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Esistono 3 diverse tipologie di software applicativo: quello per al produttività personale, per il mercato verticale e quello per il circolare?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Attraverso un firewall è possibile verificare la chiave pubblica di trasmissione di un pacchetto di dati?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Il modello di mobile advertaising a CPC penalizza i publisher?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Il processo di ottimizzazione di un database viene solitamente chiamato outsourcing?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Con il termine “digital divide” s’intende un’equa distribuzione dell’alfabetizzazione informatica tra gli individui e dell’accesso digitale tra Paesi industrializzati e quelli in via di sviluppo?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Un sistema operativo viene definito mulltasking se permette di gestire più memorie contemporaneamente?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "TACS identifica uno standard di trasmissione digitale per la telefonia mobile? ", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Convergenza significa l 'integrazione di più canali di vendita per la generazione di fatturato?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Un software dedicato, essendo meno costoso, più rapido da adottare e meno rischioso rispetto a un software standard, viene solitamente utilizzato per supportare processi aziendali comuni, che non richiedono un elevato livello di specificità e personalizzazione? ", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Un indirizzo IP è costituito da 12BYTE?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "In Internet lo scambio di dati avviene per commutazione di circuito? ", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { type: "truefalse", question: "Www è un protocollo di comunicazione?","options": [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Falso"
+]   },
+  { 
+  type: "truefalse", question: " Le fasi evolutive del ruolo delle ICT nei SI denominate Real Time e Batch sono accomunate da un 'architettura centralizzata?", 
+  options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { 
+  type: "truefalse", question: "Parliamo di Captcha sia in sicurezza che in crowdsourcing?", 
+  options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  {
+  type: "truefalse", question: "Il cloud computing rappresenta un 'architettura distribuita?", 
+  options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "RAM, ROM e hard disk sono memorie?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "RAM e ROM sono memorie centrali?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Il protocollo di comunicazione di una rete informativa è rappresentato da regole necessarie epr definire come debba avvenire lo scambio dei dati? ", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Le fasi evolutive del ruolo delle ICT nei SI denominate Real Time e Batch sono accomunate da un 'architettura centralizzata?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "La seconda generazione di telefonia prevede l 'uso del segnale digitale e consente di trasmettere voce ed SMS?","options": [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "In linea di digital ADV, CMP , CPC, CPA, CPD e CPI sono tutti modelli di pricing?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Il cloud computing è in grado di fornire l 'infrastruttura tecnologia per supportare il contesto IOT?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "La crescente potenza di calcolo dei computer disponibile a costi accessibili e necessaria allo sviluppo dell 'IA è in parte fornita dal cloud computing?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "I Marketplace sono siti B2B che prevedono l 'interazione tra molteplici fornitori e molteplici acquirenti?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Con l 'avvento dei personal computer l 'architettura distribuita detta anche client-server, supera i limiti dell 'architettura mainframe based, che fino ad allora aveva concentrato tutta la capacità elaborativa di un 'organizzazione in un unico punto?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Alcune applicazioni IOT beneficiano delle tecnologie rfid?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "La reintermediazione è un fenomeno di segno opposto alla disintermediazione e connota la nascita di nuove figure di intermediari sulla rete? ", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Overload informativo, inquinamento digitale, etica e sicurezza sono le 3 principali sfide del mondo digitale?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "I Bit sono esclusivamente da 0 a 1?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Il valore di rete dipende da numero di utenti? ", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Il codice binario adattandosi perfettamente alla presenza assenza del segnale elettrico, viene utilizzato dai computer come linguaggio- macchina?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Le aziende virtuali operano nel cosiddetto cyberspazio, non hanno negozi fisici e si concentrano unicamente sul commercio elettronico. La loro strategia viene spesso chiamata “click only”?","options": [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Le relazioni C2C accompagnano il commercio, assumendo, ad esempio la forma dell 'asta, del baratto, fin dalle sue origini?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "L’unità aritmetico/logica è uno dei tre principali elementi da cui è costruita la CPU e svolge tutte le operazioni logiche e aritmetiche necessarie al processo di elaborazione", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "L 'IP definisce in che modo un pacchetto di date deve essere formato e dove un router deve inoltrare ciascun pacchetto?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Le celle sono piccole aree di spazio geografico in cui è collocata una stazione ricetrasmittente? ", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "1GB equivale a 1024MB?","options": [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "CRM costumer relationship management?", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+  { type: "truefalse", question: "Record: occorrenza = campo: attributo", options: [
+            "Vero",
+            "Falso"
+        ],  
+		correct: [
+  "Vero"
+]   },
+    {
+        type: "multiple",
+        question: "L’Hardware è costituito da:",
+        options: [
+            "Esclusivamente da ciò che è contenuto dentro un computer",
+            "Dispositivi fisici di un computer",
+            "Programmi e dati",
+            "Memoria e processore"
+        ],
+        correct: [
+            "Dispositivi fisici di un computer"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "L’acronimo ICT è riferito a:",
+        options: [
+            "Le tecnologie per l’elaborazione dei database",
+            "Un tipo di memoria veloce",
+            "Le tecnologie dell’informazione e della comunicazione",
+            "Un protocollo di trasmissione"
+        ],
+        correct: [
+            "Le tecnologie dell’informazione e della comunicazione"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "Il Software è costituito da:",
+        options: [
+            "Programmi in genere",
+            "Router",
+            "Memoria e cpu",
+            "Periferiche"
+        ],
+        correct: [
+            "Programmi in genere"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "L’attività di “elaborazione” in un computer è gestita:",
+        options: [
+            "Nei dispositivi di Input",
+            "Nei dispositivi di Output",
+            "Nelle periferiche di connessione",
+            "Nell’Unità Centrale di Elaborazione (CPU)"
+        ],
+        correct: [
+            "Nell’Unità Centrale di Elaborazione (CPU)"
+        ]
+    },
+    {
+        type: "truefalse",
+        question: "Lo scopo di un computer è elaborare dati per trasformarli in informazioni.",
+        options: [
+            "Vero",
+            "Falso"
+        ],
+        correct: [
+            "Vero"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "Qual è la sequenza corretta delle operazioni fondamentali eseguite da un computer?",
+        options: [
+            "input, Output, elaborazione, memorizzazione",
+            "Input, elaborazione, Output, memorizzazione",
+            "Elaborazione, Input, memorizzazione, Output",
+            "Memorizzazione, Input, elaborazione, Output"
+        ],
+        correct: [
+            "Input, elaborazione, Output, memorizzazione"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "Il “digital divide” riguarda:",
+        options: [
+            "La distribuzione e l’accesso alle risorse tecnologiche",
+            "Categorie differenti di Software",
+            "Le operazioni di divisione dei computer",
+            "La comunicazione tra processi"
+        ],
+        correct: [
+            "La distribuzione e l’accesso alle risorse tecnologiche"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "Quale tra queste periferiche è esclusivamente di Input?",
+        options: [
+            "Touch-screen",
+            "Microfono",
+            "Monitor",
+            "Chiave primaria"
+        ],
+        correct: [
+            "Microfono"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "Quale tra queste periferiche è sempre e solo di Output?",
+        options: [
+            "Microfono",
+            "Stampante",
+            "Mouse",
+            "Tavoletta grafica"
+        ],
+        correct: [
+            "Stampante"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "Elaboratori: ordinamento dal meno potente al più potente.",
+        options: [
+            "Workstation, mainframe, supercomputer",
+            "Minicomputer, mainframe, workstation",
+            "Mainframe, workstation, supercomputer",
+            "Minicontroller, mainframe, workstation"
+        ],
+        correct: [
+            "Workstation, mainframe, supercomputer"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "La velocità di elaborazione di un microcomputer (PC) si misura in:",
+        options: [
+            "Hertz, istruzioni al secondo"
+        ],
+        correct: [
+            "Hertz, istruzioni al secondo"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "L’unità aritmetico-logica (ALU) si trova inclusa:",
+        options: [
+            "Nella memora di massa",
+            "Nel microfono",
+            "Nella CPU",
+            "Nella ROM"
+        ],
+        correct: [
+            "Nella CPU"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "La memoria RAM è:",
+        options: [
+            "Permanente",
+            "Volatile",
+            "Solo analogica",
+            "Sempre crittografata"
+        ],
+        correct: [
+            "Volatile"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "Un Terabyte equivale circa a:",
+        options: [
+            "100 GB",
+            "1000 MB",
+            "1000 GB",
+            "1 milione di Byte"
+        ],
+        correct: [
+            "1000 GB"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "La memoria ROM è:",
+        options: [
+            "Una memoria virtuale sull’hard-disk del pc",
+            "Una componente della memoria RAM",
+            "Un disco fisso rimovibile",
+            "Una memoria di sola lettura"
+        ],
+        correct: [
+            "Una memoria di sola lettura"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "All’avvio di un computer, le istruzioni per la fase di “boot” si trovano sulla:",
+        options: [
+            "RAM",
+            "ROM",
+            "CMOS",
+            "CPU"
+        ],
+        correct: [
+            "ROM"
+        ]
+    },
+    {
+        type: "truefalse",
+        question: "Un dato è un elemento grezzo, non elaborato.",
+        options: [
+            "Vero",
+            "Falso"
+        ],
+        correct: [
+            "Vero"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "La CPU è composta da:",
+        options: [
+            "Registri + CU + ALU (?)",
+            "Registri + CU + RAM",
+            "Registri + ROM + ALU (?)",
+            "Registri + CU + MS-DOS"
+        ],
+        correct: [
+            "Registri + CU + ALU (?)"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "Che cos’è un Sistema Operativo?",
+        options: [
+            "Insieme di programmi di videoscrittura e fogli di calcolo",
+            "Insieme di programmi per la gestione del computer",
+            "Sistema per la gestione dei contenuti",
+            "Sistema di informazione digitale"
+        ],
+        correct: [
+            "Insieme di programmi per la gestione del computer"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "Il codice ASCII è utilizzato per rappresentare:",
+        options: [
+            "Protocolli di rete",
+            "Registri e archivi digitali",
+            "Numeri, caratteri e simboli",
+            "UNICODE"
+        ],
+        correct: [
+            "Numeri, caratteri e simboli"
+        ]
+    },
+    {
+        type: "multiple",
+        question: "Nelle reti Client/Server chi fornisce i servizi richiesti è",
+        options: [
+            "CLIENT",
+            "a volte il Client, a volte il Server",
+            "SERVER",
+            "dipende dalla tipologia di rete"
+        ],
+        correct: [
+            "SERVER"
+        ]
+    },
+ {
+    type: "multiple",
+    question: "Nelle reti Client/Server chi fornisce i servizi richiesti è",
+    options: [
+      "a volte il Client, a volte il Server",
+      "il Client",
+      "il Server",
+      "dipende dalla tipologia di rete"
+    ],
+    correct: [
+      "il Server"
+    ]
+  },
+{
+    type: "multiple",
+    question: "Nelle reti Client/Server chi fornisce i servizi richiesti è",
+    options: [
+      "a volte il Client, a volte il Server",
+      "il Client",
+      "il Server",
+      "dipende dalla tipologia di rete"
+    ],
+    correct: [
+      "il Server"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Una rete Intranet è",
+    options: [
+      "il collegamento fisico tra CPU e periferiche",
+      "collegamento elettrico interno tra componenti del PC",
+      "una rete esterna ad un’altra rete",
+      "una rete privata interna ad un’organizzazione"
+    ],
+    correct: [
+      "una rete privata interna ad un’organizzazione"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Trova il nome di dominio corretto:",
+    options: [
+      "198.165.100.22",
+      "www.zalando",
+      "iulm.it",
+      ".com.net"
+    ],
+    correct: [
+      "iulm.it"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Un firewall serve, ad esempio, per:",
+    options: [
+      "autenticare gli accessi ad una rete peer-to-peer",
+      "bloccare tutti i programmi applicativi che girano su PC",
+      "filtrare i pacchetti di dati da Internet verso la Lan",
+      "eliminare i virus dei computer della extranet"
+    ],
+    correct: [
+      "filtrare i pacchetti di dati da Internet verso la Lan"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Quale, tra i seguenti, non è un software applicativo?",
+    options: [
+      "PowerPoint",
+      "Excel",
+      "Access",
+      "Linux"
+    ],
+    correct: [
+      "Linux"
+    ]
+  },
+  {
+    type: "truefalse",
+    question: "Un ISP, o provider Internet, è una società che abilita la connessione ad Internet?",
+    options: [
+      "Vero",
+      "Falso"
+    ],
+    correct: [
+      "Vero"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Nell’indirizzo http://www.example.it qual è il TLD?",
+    options: [
+      "http",
+      "www",
+      ".it",
+      "example.it"
+    ],
+    correct: [
+      ".it"
+    ]
+  },
+  {
+    type: "truefalse",
+    question: "Per le trasmissioni digitali l’ampiezza di banda è espressa in bit al secondo (bit/s)",
+    options: [
+      "Vero",
+      "Falso"
+    ],
+    correct: [
+      "Vero"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Un doppino telefonico è formato da:",
+    options: [
+      "due fili di fibra di vetro intrecciati",
+      "due fili di rame intrecciati",
+      "due fili di materiale plastico isolati",
+      "due fili di materiale isostatico e resistente"
+    ],
+    correct: [
+      "due fili di rame intrecciati"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Un programma è un insieme di:",
+    options: [
+      "istruzioni",
+      "campi",
+      "dati",
+      "record"
+    ],
+    correct: [
+      "istruzioni"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Trova l’intruso. Qual è?",
+    options: [
+      "ROM",
+      "HIFI",
+      "CPU",
+      "RAM"
+    ],
+    correct: [
+      "HIFI"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "In quale dei seguenti dispositivi viene archiviato in modo permanente un file?",
+    options: [
+      "CACHE",
+      "CPU",
+      "RAM",
+      "Hard Disk"
+    ],
+    correct: [
+      "Hard Disk"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Un programma di tipo “WORD PROCESSOR” è detto anche:",
+    options: [
+      "processatore di immagini",
+      "foglio di lavoro",
+      "di calcolo",
+      "di videoscrittura"
+    ],
+    correct: [
+      "di videoscrittura"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Quale dei seguenti nomi identifica un sistema operativo?",
+    options: [
+      "Google Chrome",
+      "Avast",
+      "Windows 7",
+      "Open Office"
+    ],
+    correct: [
+      "Windows 7"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Tra i seguenti termini, quale è riferibile alla memoria?",
+    options: [
+      "DOS",
+      "RAM",
+      "DOC",
+      "INKEJ"
+    ],
+    correct: [
+      "RAM"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Quale tra i seguenti programmi non è un browser?",
+    options: [
+      "MOZILLA",
+      "Internet",
+      "Google CHROME",
+      "Outlook"
+    ],
+    correct: [
+      "Outlook"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Che cos’è un Sistema Operativo?",
+    options: [
+      "insieme di programmi per la gestione del computer",
+      "insieme dei programmi di videoscrittura e fogli di calcolo",
+      "un sistema per la gestione dei contenuti",
+      "un sistema di informazione"
+    ],
+    correct: [
+      "insieme di programmi per la gestione del computer"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "L’estensione .DOC identifica un file utilizzato dall’applicazione…",
+    options: [
+      "Acrobat Adobe",
+      "Word",
+      "Calc",
+      "PowerPoint"
+    ],
+    correct: [
+      "Word"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "La pagina iniziale di un sito Internet si chiama:",
+    options: [
+      "Init page",
+      "Name page",
+      "Home page",
+      "House page"
+    ],
+    correct: [
+      "Home page"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Una rete LAN è",
+    options: [
+      "una rete che copre tanti edifici metropolitani",
+      "una rete geografica molto estesa",
+      "una rete che copre una città",
+      "una rete locale"
+    ],
+    correct: [
+      "una rete locale"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Una rete WAN è",
+    options: [
+      "una rete che copre una città",
+      "una rete geografica",
+      "una rete che copre un’azienda locale",
+      "una rete locale"
+    ],
+    correct: [
+      "una rete geografica"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Software di produttività personale. Un esempio è:",
+    options: [
+      "Linux",
+      "Microsoft Office",
+      "Windows",
+      "Unix"
+    ],
+    correct: [
+      "Microsoft Office"
+    ]
+  },
+  {
+    type: "multiple",
+    question: "Il software CAD, per la progettazione tecnica di ingegneri e architetti è classificabili:",
+    options: [
+      "software verticale",
+      "software orizzontale",
+      "software di produttività personale",
+      "sistema operativo"
+    ],
+    correct: [
+      "software verticale"
+    ]
+  },
+  {
+    type: "truefalse",
+    question: "Il software Open Source è utilizzabile da chiunque, senza limitazioni di utilizzo.",
+    options: [
+      "Vero",
+      "Falso"
+    ],
+    correct: [
+      "Falso"
+    ]
+  },
+	
+{
+type: "multiple",
+question: "Il sistema operativo è un insieme di programmi che si occupano di:",
+options: [
+"Gestire le risorse del computer e di fornire un'interfaccia all'utente",
+"Eseguire i programmi applicativi",
+"Proteggere il computer dai virus",
+"Navigare in internet"
+],
+correct: [
+"Gestire le risorse del computer e di fornire un'interfaccia all'utente"
+]
+},
+{
+type: "multiple",
+question: "Quale dei seguenti non è un esempio di sistema operativo?",
+options: [
+"Windows",
+"MacOS",
+"Linux",
+"Microsoft Word"
+],
+correct: [
+"Microsoft Word"
+]
+},
+{
+type: "multiple",
+question: "Quale dei seguenti è un esempio di software applicativo?",
+options: [
+"Windows",
+"MacOS",
+"Linux",
+"Microsoft Excel"
+],
+correct: [
+"Microsoft Excel"
+]
+},
+{
+type: "multiple",
+question: "Cosa significa l'acronimo CPU?",
+options: [
+"Central Processing Unit",
+"Computer Processing Unit",
+"Central Programming Unit",
+"Common Processing Unit"
+],
+correct: [
+"Central Processing Unit"
+]
+},
+{
+type: "multiple",
+question: "Cosa significa l'acronimo RAM?",
+options: [
+"Random Access Memory",
+"Read Only Memory",
+"Read Access Memory",
+"Random Only Memory"
+],
+correct: [
+"Random Access Memory"
+]
+},
+{
+type: "multiple",
+question: "Cosa significa l'acronimo ROM?",
+options: [
+"Random Access Memory",
+"Read Only Memory",
+"Read Access Memory",
+"Random Only Memory"
+],
+correct: [
+"Read Only Memory"
+]
+},
+{
+type: "multiple",
+question: "Quale dei seguenti è un esempio di periferica di input?",
+options: [
+"Monitor",
+"Stampante",
+"Tastiera",
+"Altoparlanti"
+],
+correct: [
+"Tastiera"
+]
+},
+{
+type: "multiple",
+question: "Quale dei seguenti è un esempio di periferica di output?",
+options: [
+"Tastiera",
+"Mouse",
+"Monitor",
+"Microfono"
+],
+correct: [
+"Monitor"
+]
+},
+{
+type: "multiple",
+question: "Cosa significa l'acronimo URL?",
+options: [
+"Uniform Resource Locator",
+"Universal Resource Locator",
+"Uniform Remote Locator",
+"Universal Remote Locator"
+],
+correct: [
+"Uniform Resource Locator"
+]
+},
+{
+type: "multiple",
+question: "Cosa significa l'acronimo HTTP?",
+options: [
+"HyperText Transfer Protocol",
+"HyperText Test Protocol",
+"High-Tech Transfer Protocol",
+"High-Tech Test Protocol"
+],
+correct: [
+"HyperText Transfer Protocol"
+]
+},
+{
+type: "multiple",
+question: "Cosa significa l'acronimo WWW?",
+options: [
+"World Wide Web",
+"World Wide Wait",
+"Wide World Web",
+"Wide World Wait"
+],
+correct: [
+"World Wide Web"
+]
+},
+{
+type: "multiple",
+question: "Quale dei seguenti è un esempio di browser web?",
+options: [
+"Microsoft Word",
+"Microsoft Excel",
+"Google Chrome",
+"Microsoft PowerPoint"
+],
+correct: [
+"Google Chrome"
+]
+},
+{
+type: "multiple",
+question: "Quale dei seguenti è un esempio di motore di ricerca?",
+options: [
+"Google Chrome",
+"Mozilla Firefox",
+"Google",
+"Safari"
+],
+correct: [
+"Google"
+]
+},
+{
+type: "multiple",
+question: "Cosa significa l'acronimo ISP?",
+options: [
+"Internet Service Provider",
+"Internet Security Protocol",
+"Information Service Provider",
+"Information Security Protocol"
+],
+correct: [
+"Internet Service Provider"
+]
+},
+{
+type: "multiple",
+question: "Cosa significa l'acronimo email?",
+options: [
+"Electronic mail",
+"Easy mail",
+"Electric mail",
+"Essential mail"
+],
+correct: [
+"Electronic mail"
+]
+},
+{
+type: "multiple",
+question: "Quale dei seguenti è un esempio di social network?",
+options: [
+"Google",
+"Bing",
+"Facebook",
+"Yahoo"
+],
+correct: [
+"Facebook"
+]
+},
+{
+type: "multiple",
+question: "Cosa significa l'acronimo WiFi?",
+options: [
+"Wireless Fidelity",
+"Wireless Frequency",
+"Wireless Internet",
+"Wireless Network"
+],
+correct: [
+"Wireless Fidelity"
+]
+},
+{
+type: "multiple",
+question: "Cosa significa l'acronimo Bluetooth?",
+options: [
+"Blue Tooth",
+"Blue Technology",
+"Bluetooth Technology",
+"Bluetooth Connection"
+],
+correct: [
+"Blue Tooth"
+]
+},
+{
+type: "truefalse",
+question: "Il cloud computing è un modello di erogazione di servizi IT tramite Internet.",
+options: [
+"Vero",
+"Falso"
+],
+correct: [
+"Vero"
+]
+},
+{
+type: "multiple",
+question: "Quale dei seguenti non è un tipo di cloud computing?",
+options: [
+"IaaS",
+"PaaS",
+"SaaS",
+"DaaS"
+],
+correct: [
+"DaaS"
+]
+},
+{
+type: "multiple",
+question: "Cosa significa l'acronimo IaaS?",
+options: [
+"Infrastructure as a Service",
+"Internet as a Service",
+"Information as a Service",
+"Integration as a Service"
+],
+correct: [
+"Infrastructure as a Service"
+]
+},
+{
+type: "multiple",
+question: "Cosa significa l'acronimo PaaS?",
+options: [
+"Platform as a Service",
+"Program as a Service",
+"Process as a Service",
+"Package as a Service"
+],
+correct: [
+"Platform as a Service"
+]
+},
+{
+type: "multiple",
+question: "Cosa significa l'acronimo SaaS?",
+options: [
+"Software as a Service",
+"System as a Service",
+"Solution as a Service",
+"Storage as a Service"
+],
+correct: [
+"Software as a Service"
+]
+},
+{
+type: "truefalse",
+question: "La cybersecurity è l'insieme delle tecnologie e dei processi per proteggere i sistemi informatici da minacce e attacchi.",
+options: [
+"Vero",
+"Falso"
+],
+correct: [
+"Vero"
+]
+},
+{
+type: "multiple",
+question: "Quale dei seguenti non è una minaccia alla cybersecurity?",
+options: [
+"Virus",
+"Malware",
+"Firewall",
+"Phishing"
+],
+correct: [
+"Firewall"
+]
+},
+{
+type: "multiple",
+question: "Cosa significa l'acronimo GDPR?",
+options: [
+"General Data Protection Regulation",
+"General Data Protection Report",
+"Global Data Protection Regulation",
+"Global Data Protection Report"
+],
+correct: [
+"General Data Protection Regulation"
+]
+},
+{
+type: "multiple",
+question: "Quale dei seguenti non è un principio del GDPR?",
+options: [
+"Liceità, correttezza e trasparenza",
+"Limitazione delle finalità",
+"Minimizzazione dei dati",
+"Conservazione illimitata dei dati"
+],
+correct: [
+"Conservazione illimitata dei dati"
+]
+},
+{
+type: "truefalse",
+question: "La blockchain è una tecnologia che permette di creare registri digitali condivisi e immutabili.",
+options: [
+"Vero",
+"Falso"
+],
+correct: [
+"Vero"
+]
+},
+{
+type: "multiple",
+question: "Quale dei seguenti non è un'applicazione della blockchain?",
+options: [
+"Criptovalute",
+"Smart contract",
+"Internet",
+"Supply chain management"
+],
+correct: [
+"Internet"
+]
+},
+{
+type: "multiple",
+question: "Cosa significa l'acronimo AI?",
+options: [
+"Artificial Intelligence",
+"Artificial Internet",
+"Automatic Intelligence",
+"Automatic Internet"
+],
+correct: [
+"Artificial Intelligence"
+]
+},
+{
+    type: "multiple",
+    question: "Una rete Intranet è:",
+    options: [
+      "Il collegamento fisico tra CPU e periferiche",
+      "Collegamento elettrico interno tra componenti del PC",
+      "Una rete esterna ad un’altra rete",
+      "Una rete privata interna ad un’organizzazione"
+    ],
+    correct: ["Una rete privata interna ad un’organizzazione"]
+  },
+  {
+    type: "multiple",
+    question: "Trova il nome di dominio corretto:",
+    options: [
+      "198.165.100.22",
+      "www.zalando",
+      "iulm.it",
+      ".com.net"
+    ],
+    correct: ["iulm.it"]
+  },
+  {
+    type: "multiple",
+    question: "Un firewall serve, ad esempio, per:",
+    options: [
+      "Autenticare gli accessi ad una rete peer-to-peer",
+      "Bloccare tutti i programmi applicativi che girano su PC",
+      "Filtrare i pacchetti di dati da Internet verso la Lan",
+      "Eliminare i virus dei computer della extranet"
+    ],
+    correct: ["Filtrare i pacchetti di dati da Internet verso la Lan"]
+  },
+  {
+    type: "multiple",
+    question: "Quale, tra i seguenti, non è un software applicativo?",
+    options: [
+      "PowerPoint",
+      "Excel",
+      "Access",
+      "Linux"
+    ],
+    correct: ["Linux"]
+  },
+  {
+    type: "truefalse",
+    question: "Un ISP, o provider Internet, è una società che abilita la connessione ad Internet?",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "multiple",
+    question: "Nell’indirizzo http://www.example.it qual è il TLD?",
+    options: [
+      "http",
+      "www",
+      ".it",
+      "example.it"
+    ],
+    correct: [".it"]
+  },
+  {
+    type: "truefalse",
+    question: "Per le trasmissioni digitali l’ampiezza di banda è espressa in bit al secondo (bit/s)?",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "multiple",
+    question: "Un doppino telefonico è formato da:",
+    options: [
+      "Due fili di fibra di vetro intrecciati",
+      "Due fili di rame intrecciati",
+      "Due fili di materiale plastico isolati",
+      "Due fili di materiale isostatico e resistente"
+    ],
+    correct: ["Due fili di rame intrecciati"]
+  },
+  {
+    type: "multiple",
+    question: "Un programma è un insieme di:",
+    options: [
+      "Istruzioni",
+      "Campi",
+      "Dati",
+      "Record"
+    ],
+    correct: ["Istruzioni"]
+  },
+  {
+    type: "multiple",
+    question: "Trova l’intruso. Qual è?",
+    options: [
+      "ROM",
+      "HIFI",
+      "CPU",
+      "RAM"
+    ],
+    correct: ["HIFI"]
+  },
+  {
+    type: "multiple",
+    question: "In quale dei seguenti dispositivi viene archiviato in modo permanente un file?",
+    options: [
+      "CACHE",
+      "CPU",
+      "RAM",
+      "Hard Disk"
+    ],
+    correct: ["Hard Disk"]
+  },
+  {
+    type: "multiple",
+    question: "Un programma di tipo “WORD PROCESSOR” è detto anche:",
+    options: [
+      "Processatore di immagini",
+      "Foglio di lavoro",
+      "Di calcolo",
+      "Di videoscrittura"
+    ],
+    correct: ["Di videoscrittura"]
+  },
+  {
+    type: "multiple",
+    question: "Quale dei seguenti nomi identifica un sistema operativo?",
+    options: [
+      "Google Chrome",
+      "Avast",
+      "Windows 7",
+      "Open Office"
+    ],
+    correct: ["Windows 7"]
+  },
+  {
+    type: "multiple",
+    question: "Tra i seguenti termini, quale è riferibile alla memoria?",
+    options: [
+      "DOS",
+      "RAM",
+      "DOC",
+      "INKEJ"
+    ],
+    correct: ["RAM"]
+  },
+  {
+    type: "multiple",
+    question: "Quale tra i seguenti programmi non è un browser?",
+    options: [
+      "MOZILLA",
+      "Internet",
+      "Google CHROME",
+      "Outlook"
+    ],
+    correct: ["Outlook"]
+  },
+  {
+    type: "multiple",
+    question: "Che cos’è un Sistema Operativo?",
+    options: [
+      "Insieme di programmi per la gestione del computer",
+      "Insieme dei programmi di videoscrittura e fogli di calcolo",
+      "Un sistema per la gestione dei contenuti",
+      "Un sistema di informazione"
+    ],
+    correct: ["Insieme di programmi per la gestione del computer"]
+  },
+  {
+    type: "multiple",
+    question: "L’estensione .DOC identifica un file utilizzato dall’applicazione…",
+    options: [
+      "Acrobat Adobe",
+      "Word",
+      "Calc",
+      "PowerPoint"
+    ],
+    correct: ["Word"]
+  },
+  {
+    type: "multiple",
+    question: "La pagina iniziale di un sito Internet si chiama:",
+    options: [
+      "Init page",
+      "Name page",
+      "Home page",
+      "House page"
+    ],
+    correct: ["Home page"]
+  },
+  {
+    type: "multiple",
+    question: "Una rete LAN è:",
+    options: [
+      "Una rete che copre tanti edifici metropolitani",
+      "Una rete geografica molto estesa",
+      "Una rete che copre una città",
+      "Una rete locale"
+    ],
+    correct: ["Una rete locale"]
+  },
+  {
+    type: "multiple",
+    question: "Una rete WAN è:",
+    options: [
+      "Una rete che copre una città",
+      "Una rete geografica",
+      "Una rete che copre un’azienda locale",
+      "Una rete locale"
+    ],
+    correct: ["Una rete geografica"]
+  },	
+{
+    type: "multiple",
+    question: "Sono state definite 'DOT-COM' tutte quelle società che hanno sviluppato il proprio business attraverso:",
+    options: [
+      "Negozi fisici tradizionali",
+      "Negozi online",
+      "Negozi fisici tradizionali e online",
+      "Negozi supply chain"
+    ],
+    correct: ["Negozi online"]
+  },
+  {
+    type: "multiple",
+    question: "Click & Mortar è un’espressione che rappresenta un modello di business…",
+    options: [
+      "Integrato off-line e tradizionale",
+      "Integrato off-line e on-line",
+      "Integrato digitale e on-line",
+      "Integrato digitale e long tail"
+    ],
+    correct: ["Integrato off-line e on-line"]
+  },
+  {
+    type: "multiple",
+    question: "Omnichannel significa che tutti i canali commerciali a disposizione del consumatore:",
+    options: [
+      "Sono tra loro connessi",
+      "Sono interconnessi ma non consentono di effettuare transazioni",
+      "Sono di nicchia",
+      "Sono interconnessi ma non consentono di effettuare transazioni tradizionali"
+    ],
+    correct: ["Sono tra loro connessi"]
+  },
+  {
+    type: "multiple",
+    question: "La tecnologia dell’informazione e della comunicazione (ICT) si riferisce a:",
+    options: [
+      "La scienza del calcolo automatico",
+      "Elaborazione e trasmissione delle informazioni",
+      "Il personal computer",
+      "Sistemi client server"
+    ],
+    correct: ["Elaborazione e trasmissione delle informazioni"]
+  },
+  {
+    type: "multiple",
+    question: "Le fasi dell’evoluzione delle architetture ICT sono:",
+    options: [
+      "Batch, real time, PC revolution, Cloud computing",
+      "Centralizzate, distribuite, cloud computing",
+      "PC, mainframe, client, server",
+      "Mainframe, PC revolution, client-server"
+    ],
+    correct: ["Batch, real time, PC revolution, Cloud computing"]
+  },
+  {
+    type: "multiple",
+    question: "Il numero di carte fedeltà di un’azienda rappresenta:",
+    options: [
+      "Un dato",
+      "Una conoscenza",
+      "Un’informazione",
+      "Un’esperienza"
+    ],
+    correct: ["Un dato"]
+  },
+  {
+    type: "multiple",
+    question: "L’Hardware è costituito da:",
+    options: [
+      "Tutti i dispositivi fisici di un computer",
+      "Programmi e dati",
+      "Solo tutto ciò che è contenuto nel case",
+      "Solo tutto ciò che è contenuto nel driver"
+    ],
+    correct: ["Tutti i dispositivi fisici di un computer"]
+  },
+  {
+    type: "multiple",
+    question: "Il codice ASCII è un codice binario utilizzato:",
+    options: [
+      "Solo nei mainframe",
+      "Per rappresentare numeri, caratteri e simboli",
+      "Solo sui server",
+      "Per rappresentare tutte le lingue scritte utilizzate nel mondo"
+    ],
+    correct: ["Per rappresentare numeri, caratteri e simboli"]
+  },
+  {
+    type: "truefalse",
+    question: "La Rete del valore è formata da tutte le aziende che concorrono a generare 'valore' per il cliente.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "Omnicanalità integra canali fisici e digitali, relazionati tra loro.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "Disintermediazione, ovvero eliminare degli intermediari all’interno di un canale di distribuzione.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "multiple",
+    question: "Il protocollo di base di Internet è:",
+    options: [
+      "TFTP",
+      "TCP/IP",
+      "HTTP",
+      "FTP"
+    ],
+    correct: ["TCP/IP"]
+  },
+  {
+    type: "multiple",
+    question: "La teoria della coda lunga afferma che:",
+    options: [
+      "Vendite di prodotti di nicchia possono essere molto redditizie",
+      "Vendite aggregate di prodotti di nicchia possono essere poco redditizie",
+      "Vendite di prodotti di nicchia sono tipiche dell’economia 'non digitale'",
+      "Vendite aggregate di prodotti di massa sono offline"
+    ],
+    correct: ["Vendite di prodotti di nicchia possono essere molto redditizie"]
+  },
+  {
+    type: "multiple",
+    question: "Alibaba è:",
+    options: [
+      "Un marketplace, un motore di ricerca e una banca, all-in-one",
+      "Una compagnia americana di ecommerce B2C",
+      "Una start-up che sviluppa un modello di business per mercati di nicchia",
+      "Un sistema di trasmissione peer-to-peer a corto raggio"
+    ],
+    correct: ["Un marketplace, un motore di ricerca e una banca, all-in-one"]
+  },
+  {
+    type: "truefalse",
+    question: "Il software standard sono applicazioni realizzate per una molteplicità eterogenea di utenti.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+{
+    type: "multiple",
+    question: "I social che usiamo più volte a settimana si definiscono:",
+    options: [
+      "Social di cittadinanza",
+      "Social funzionali",
+      "Social disfunzionali",
+      "Social di rilevanza"
+    ],
+    correct: ["Social di cittadinanza"]
+  },
+  {
+    type: "multiple",
+    question: "Le imprese che operano secondo un modello di business integrato off-line e on-line si definiscono:",
+    options: [
+      "Brick & Mortar",
+      "Click & Mortar",
+      "Pure players",
+      "Old economy"
+    ],
+    correct: ["Click & Mortar"]
+  },
+  {
+    type: "truefalse",
+    question: "In Internet, la comunicazione avviene tramite commutazione di circuito.",
+    options: ["Vero", "Falso"],
+    correct: ["Falso"]
+  },
+  {
+    type: "truefalse",
+    question: "Reti P2P: tutti i computer collegati in rete possono condividere risorse, applicativi e fornire servizi.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "ADSL è una tecnica trasmissiva asimmetrica.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "multiple",
+    question: "L’indirizzo IP:",
+    options: [
+      "Identifica in modo 'univoco' un sistema connesso alla rete internet",
+      "È formato da caratteri alfanumerici",
+      "Crea l’associazione tra DNS e il nome logico della macchina",
+      "Converte gli indirizzi alfanumerici dei nomi di dominio"
+    ],
+    correct: ["Identifica in modo 'univoco' un sistema connesso alla rete internet"]
+  },
+  {
+    type: "multiple",
+    question: "Domini di primo livello (TLD). Trova l’intruso:",
+    options: [
+      ".gov",
+      "www.example.com",
+      ".it",
+      ".museum"
+    ],
+    correct: ["www.example.com"]
+  },
+  {
+    type: "truefalse",
+    question: "Il linguaggio HTML definisce una serie di 'tag' da utilizzare nelle pagine Web: intestazioni, paragrafi, ecc.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "multiple",
+    question: "Lo scoppio della 'bolla' della New Economy è stato registrato nell’anno:",
+    options: [
+      "1999",
+      "2000",
+      "2001",
+      "1998"
+    ],
+    correct: ["2000"]
+  },
+  {
+    type: "multiple",
+    question: "I 3 modi di fare business con Internet nell’era Web 1.0:",
+    options: [
+      "Capability, Connection, Commerce",
+      "Commerce, Conversion, Content",
+      "Commerce, Connection, Communication",
+      "Commerce, Connection, Content"
+    ],
+    correct: ["Commerce, Connection, Content"]
+  },
+  {
+    type: "truefalse",
+    question: "Codice oggetto è un file contenente la traduzione del codice sorgente in linguaggio macchina.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "Per vendere ai consumatori è opportuno essere presenti in tutti i punti di contatto, fisici e digitali, con i clienti.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "Il digital divide esprime le differenze di accesso alle reti a banda larga tra centri urbani, aree rurali, Nord e Sud.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "I tag 'RFID' sono particolari etichette elettroniche capaci di rispondere quando 'interrogate' a distanza.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "I sistemi operativi coordinano l’interazione tra utenti, software applicativo, hardware e periferiche.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "L’interfaccia è una componente software del sistema operativo.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "Un server è un computer collegato in rete che consente a più computer (i client) di accedere ai servizi condivisi.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "La Suite Office di Microsoft è un software applicativo di produttività personale.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "Linux è un sistema operativo Open Source sviluppato da Linus Torvalds a partire dal 1991.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "La IANA (Internet Assigned Numbers Authority) si occupa dell’assegnazione dei domini.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "Ogni pagina Web può contenere dei link ad altre pagine che si trovano sul medesimo server o su un server remoto.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "La Extranet è una rete geografica che utilizza il protocollo TCP/IP.",
+    options: ["Vero", "Falso"],
+    correct: ["Falso"]
+  },
+  {
+    type: "truefalse",
+    question: "C2C è una forma di commercio elettronico che prevede scambio di informazioni e transazioni commerciali tra privati.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "Internet è un media 'information intensive' che riduce le asimmetrie informative tra produttore e consumatore.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+{
+    type: "multiple",
+    question: "Trova l’intruso. A proposito di Web Analytics (analisi degli usi di un sito web) si tracciano:",
+    options: [
+      "Informazioni sulla provenienza tecnica degli utenti",
+      "Informazioni sulla fruizione del contenuto del sito",
+      "Informazioni sull’utente e le visite",
+      "Informazioni sulle texture che ostacolano la lettura"
+    ],
+    correct: ["Informazioni sulle texture che ostacolano la lettura"]
+  },
+  {
+    type: "multiple",
+    question: "Click & Mortar significa:",
+    options: [
+      "Un modello di business integrato off-line e on-line",
+      "Un modello di business on-line",
+      "Un modello di business off-line",
+      "Un modello di business non convergente"
+    ],
+    correct: ["Un modello di business integrato off-line e on-line"]
+  },
+  {
+    type: "multiple",
+    question: "Omnichannel significa che tutti i canali a disposizione del consumatore:",
+    options: [
+      "Non sono tra loro connessi",
+      "Sono tradizionali perché utilizzano spazi fisici",
+      "Non sono integrati ma sono online",
+      "Sono tra loro connessi"
+    ],
+    correct: ["Sono tra loro connessi"]
+  },
+  {
+    type: "multiple",
+    question: "Ecommerce. I settori che si prevede oggi crescano maggiormente online:",
+    options: [
+      "Etravel, editoria e arredamento",
+      "Etravel, editoria e fashion",
+      "Etravel, fashion e arredamento",
+      "Editoria, fashion e arredamento"
+    ],
+    correct: ["Etravel, fashion e arredamento"]
+  },
+  {
+    type: "truefalse",
+    question: "Omnicanalità integra canali fisici e digitali, relazionati tra di loro.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "multiple",
+    question: "La teoria della coda lunga. Le vendite aggregate di prodotti di nicchia possono essere:",
+    options: [
+      "Redditizie quanto i modelli tradizionali",
+      "Catalogate come tipiche dell’economia non digitale",
+      "Poco redditizie rispetto ai modelli tradizionali",
+      "Catalogate come tipiche dell’economia analogica"
+    ],
+    correct: ["Redditizie quanto i modelli tradizionali"]
+  },
+  {
+    type: "multiple",
+    question: "Alibaba è:",
+    options: [
+      "Un sistema di trasmissione peer-to-peer a corto raggio",
+      "Un modello di business per mercati di nicchia",
+      "Una compagnia americana di ecommerce B2C",
+      "Un marketplace, un motore di ricerca e una banca, all-in-one"
+    ],
+    correct: ["Un marketplace, un motore di ricerca e una banca, all-in-one"]
+  },
+  {
+    type: "truefalse",
+    question: "Internet è un media information intensive.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "multiple",
+    question: "Trova l’intruso tra i seguenti trends ICT:",
+    options: [
+      "Social media",
+      "Photoshop",
+      "IoT",
+      "Cloud computing"
+    ],
+    correct: ["Photoshop"]
+  },
+  {
+    type: "multiple",
+    question: "Con il termine “showrooming” si indica il seguente fenomeno relativo ai clienti:",
+    options: [
+      "Esaminano i prodotti in negozio e poi ordinano online",
+      "Esaminano i prodotti di persona in negozio",
+      "Esaminano i prodotti online e poi ordinano in negozio",
+      "Esaminano i prodotti di persona online"
+    ],
+    correct: ["Esaminano i prodotti in negozio e poi ordinano online"]
+  },
+  {
+    type: "multiple",
+    question: "Oggi l’evoluzione della multicanalità viene chiamata:",
+    options: [
+      "Omnicanalità",
+      "Schema menu-driven",
+      "Mainstream shopping",
+      "Showrooming"
+    ],
+    correct: ["Omnicanalità"]
+  },
+  {
+    type: "multiple",
+    question: "La strategia di eliminare gli intermediari è nota come:",
+    options: [
+      "Disintermediazione",
+      "Showrooming",
+      "Brick and mortar",
+      "Internet relay chat"
+    ],
+    correct: ["Disintermediazione"]
+  },
+  {
+    type: "multiple",
+    question: "Il termine “pure-player” si usa per definire:",
+    options: [
+      "Una strategia online pura",
+      "Una strategia social context",
+      "Una strategia di approccio al cliente nei mercati fisici",
+      "Una strategia offline pura"
+    ],
+    correct: ["Una strategia online pura"]
+  },
+  {
+    type: "multiple",
+    question: "Nell’ambito delle minacce alla sicurezza informatica, indicare l’intruso:",
+    options: [
+      "Spoofing",
+      "Sniffing",
+      "Phishing",
+      "Trivialing"
+    ],
+    correct: ["Trivialing"]
+  },
+  {
+    type: "multiple",
+    question: "Il firewall è:",
+    options: [
+      "Un algoritmo utilizzato per la crittografia",
+      "Un protocollo utilizzato per la connessione a Internet",
+      "Un linguaggio di programmazione",
+      "Un sistema che impedisce l’accesso non autorizzato a una rete"
+    ],
+    correct: ["Un sistema che impedisce l’accesso non autorizzato a una rete"]
+  },
+  {
+    type: "multiple",
+    question: "Chi compie attacchi informatici con finalità di dolo o di lucro è:",
+    options: [
+      "Cracker",
+      "Hacker",
+      "Hater",
+      "Ethical hater"
+    ],
+    correct: ["Cracker"]
+  },
+{
+    type: "multiple",
+    question: "Quale, fra le seguenti, non identificava standard di trasmissione digitale per la telefonia mobile?",
+    options: [
+      "TACS",
+      "LTEW",
+      "UMTS",
+      "GSM"
+    ],
+    correct: ["TACS"]
+  },
+  {
+    type: "multiple",
+    question: "Lo standard UMTS è in grado di conciliare la mobilità dell'utente con la crescente esigenza di:",
+    options: [
+      "Multimedialità",
+      "Pricing",
+      "Staticità",
+      "Trasmissioni analogiche"
+    ],
+    correct: ["Multimedialità"]
+  },
+  {
+    type: "multiple",
+    question: "Le tecniche di responsive web design sono utili a:",
+    options: [
+      "Adattare il layout del sito web al dispositivo mobile utilizzato",
+      "Attivare servizi di ecommerce",
+      "Agevolare i feedback degli utenti",
+      "Consentire ai siti web di 2.0"
+    ],
+    correct: ["Adattare il layout del sito web al dispositivo mobile utilizzato"]
+  },
+  {
+    type: "multiple",
+    question: "L'introduzione della SIM card è una novità di quale generazione mobile?",
+    options: [
+      "Seconda",
+      "Quarta",
+      "Prima",
+      "Terza"
+    ],
+    correct: ["Seconda"]
+  },
+  {
+    type: "multiple",
+    question: "Tra le principali novità tra le applicazioni della 5ª generazione mobile ci saranno:",
+    options: [
+      "Device che potranno dialogare in rete ed essere controllati a distanza",
+      "Video in streaming",
+      "Roaming",
+      "In formato analogico"
+    ],
+    correct: ["Device che potranno dialogare in rete ed essere controllati a distanza"]
+  },
+  {
+    type: "truefalse",
+    question: "Con lo standard GSM la trasmissione diviene digitale.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "Lo standard TACS prevedeva due canali: uno principale per il traffico voce e uno secondario per il traffico dati.",
+    options: ["Vero", "Falso"],
+    correct: ["Falso"]
+  },
+  {
+    type: "multiple",
+    question: "L'accessibilità di un sito web:",
+    options: [
+      "Consente la fruibilità da parte di utenti affetti da disabilità",
+      "Consente l'accesso a un numero elevato di servizi offerti dal sito web",
+      "Riguarda l'affinità tra l'aspetto grafico del sito e l'argomento trattato",
+      "Riguarda la facilità con cui l'utente riesce a trovare i contatti"
+    ],
+    correct: ["Consente la fruibilità da parte di utenti affetti da disabilità"]
+  },
+  {
+    type: "multiple",
+    question: "Usabilità. L'accuratezza e completezza con cui raggiungo il mio obiettivo si dice:",
+    options: [
+      "Efficacia",
+      "Efficienza",
+      "Soddisfazione",
+      "Intercettazione"
+    ],
+    correct: ["Efficacia"]
+  },
+  {
+    type: "multiple",
+    question: "Nella web usability la progettazione è concentrata su:",
+    options: [
+      "Software",
+      "Utente",
+      "Interfaccia hardware",
+      "Sistema operativo"
+    ],
+    correct: ["Utente"]
+  },
+  {
+    type: "multiple",
+    question: "Al crescere del tempo di caricamento di una pagina aumenta la percentuale di abbandono.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "multiple",
+    question: "UX Design si occupa dell'interazione tra utenti e prodotti/servizi e combina:",
+    options: [
+      "Psicologia, tecnologia, design",
+      "Psicologia, tecnologia, open source",
+      "Psicologia, tecnologia, hardware",
+      "Psicologia, tecnologia, retail 4.0"
+    ],
+    correct: ["Psicologia, tecnologia, design"]
+  },
+  {
+    type: "multiple",
+    question: "Mobile friendly significa che il sito è:",
+    options: [
+      "Ottimizzato per dispositivi standard",
+      "Ottimizzato per i dispositivi mobili",
+      "Ottimizzato per dispositivi hardware",
+      "Ottimizzato per dispositivi software"
+    ],
+    correct: ["Ottimizzato per i dispositivi mobili"]
+  },
+  {
+    type: "multiple",
+    question: "Usare lo stesso colore per oggetti simili significa lavorare su concetti di:",
+    options: [
+      "Dissociazione",
+      "Associazione",
+      "Discussione",
+      "Interazione"
+    ],
+    correct: ["Associazione"]
+  },
+  {
+    type: "multiple",
+    question: "Nella scelta del font occorre privilegiare il criterio della:",
+    options: [
+      "Interattività",
+      "Scorrevolezza",
+      "Leggibilità",
+      "Eleganza"
+    ],
+    correct: ["Leggibilità"]
+  },
+  {
+    type: "multiple",
+    question: "Web analytics. Su tutte le pagine di cui si vogliono analizzare gli usi si inserisce un:",
+    options: [
+      "Immagine",
+      "Codice",
+      "Colore",
+      "Tabella"
+    ],
+    correct: ["Codice"]
+  },
+  {
+    type: "truefalse",
+    question: "UX valuta la soddisfazione delle interazioni utente con il sito.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+{
+    type: "multiple",
+    question: "Quando i prodotti non soddisfano le esigenze o rendono difficile il raggiungimento degli obiettivi, gli utenti:",
+    options: [
+      "Completano il processo di registrazione da un'app",
+      "Abbandonano il sito",
+      "Il tasso di fidelizzazione aumenta",
+      "Fanno almeno 10 tentativi"
+    ],
+    correct: ["Abbandonano il sito"]
+  },
+  {
+    type: "multiple",
+    question: "Il cookie è:",
+    options: [
+      "Un software di piccola dimensione",
+      "Un algoritmo di piccola dimensione",
+      "Un file di testo di piccola dimensione",
+      "Un file MP quattro di piccola dimensione"
+    ],
+    correct: ["Un file di testo di piccola dimensione"]
+  },
+  {
+    type: "multiple",
+    question: "Trova l'intruso. Le tre cose fondamentali in un profilo LinkedIn:",
+    options: [
+      "Foto",
+      "Il tuo sommario",
+      "La tua qualifica",
+      "Il voto di maturità"
+    ],
+    correct: ["Il voto di maturità"]
+  },
+  {
+    type: "multiple",
+    question: "Secondo LinkedIn è più attrattiva una foto:",
+    options: [
+      "Con sorriso che si vedono i denti",
+      "Serie concentrata",
+      "Con un sorriso che non si vedono i denti",
+      "Artistica e colorata"
+    ],
+    correct: ["Con sorriso che si vedono i denti"]
+  },
+  {
+    type: "truefalse",
+    question: "LinkedIn per essere trovati dai recruiters occorre utilizzare le keywords.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "multiple",
+    question: "Prima di chiedere la connessione su LinkedIn è bene scrivere:",
+    options: [
+      "Un messaggio",
+      "Una presentazione PowerPoint",
+      "Un SMS",
+      "Niente basta cliccare sul bottone invia"
+    ],
+    correct: ["Un messaggio"]
+  },
+  {
+    type: "multiple",
+    question: "Trova l'intruso. LinkedIn è il luogo dove:",
+    options: [
+      "Continuare a imparare",
+      "Fare personal branding",
+      "Fare networking",
+      "Fare calcoli matematici complessi"
+    ],
+    correct: ["Fare calcoli matematici complessi"]
+  },
+  {
+    type: "multiple",
+    question: "LinkedIn si basa sulla regola dei 3 gradi di separazione, quanti?",
+    options: [
+      "5",
+      "7",
+      "6",
+      "8"
+    ],
+    correct: ["6"]
+  },
+  {
+    type: "truefalse",
+    question: "Un Cookie non è possibile eseguirlo e non può contenere virus.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "Social commerce: le aziende possono vendere i loro prodotti e servizi attraverso i social network.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "multiple",
+    question: "Retargeting: insieme di attività pubblicitarie online rivolte agli utenti:",
+    options: [
+      "Che sono arrivati alla conversione finale",
+      "Concetto legato solo al social media marketing",
+      "Che non sono arrivati alla conversione finale",
+      "Concetto non collegato alla conversione finale"
+    ],
+    correct: ["Che non sono arrivati alla conversione finale"]
+  },
+  {
+    type: "multiple",
+    question: "Google Analytics consente:",
+    options: [
+      "L'analisi e il monitoraggio delle iscrizioni alle newsletter",
+      "L'analisi e il salvataggio del business degli utenti di un sito",
+      "L'analisi e il monitoraggio del comportamento degli utenti di un sito web",
+      "L'analisi e il monitoraggio dell'acquisto di un utente"
+    ],
+    correct: ["L'analisi e il monitoraggio del comportamento degli utenti di un sito web"]
+  },
+  {
+    type: "multiple",
+    question: "Banner: fattori di successo. Trova l'intruso",
+    options: [
+      "Localizzazione",
+      "Posizionamento",
+      "Creatività",
+      "Algoritmo"
+    ],
+    correct: ["Algoritmo"]
+  },
+  {
+    type: "multiple",
+    question: "Click through rate (CTR): È il rapporto fra il numero di click generati da un annuncio e:",
+    options: [
+      "Il numero di volte in cui l'annuncio è stato visto",
+      "Il numero delle volte in cui l'annuncio è stato registrato",
+      "Il numero delle volte in cui l'annuncio è stato cliccato",
+      "Il numero delle volte in cui l'annuncio è stato pagato"
+    ],
+    correct: ["Il numero di volte in cui l'annuncio è stato visto"]
+  },
+  {
+    type: "multiple",
+    question: "Landing page:",
+    options: [
+      "È una pagina di atterraggio",
+      "È un indice di bilancio",
+      "È un banner di tipo pop-up",
+      "È un adserver"
+    ],
+    correct: ["È una pagina di atterraggio"]
+  },
+  {
+    type: "multiple",
+    question: "Google Ads è una piattaforma pubblicitaria di tipo:",
+    options: [
+      "CPC",
+      "CPL",
+      "CPM",
+      "CPA"
+    ],
+    correct: ["CPC"]
+  },
+  {
+    type: "truefalse",
+    question: "Pop-up è una finestra che compare all'apertura di un sito web particolarmente fastidiosa per la difficoltà di chiusura.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "truefalse",
+    question: "Motore di ricerca: la ricerca viene effettuata nel database del motore.",
+    options: ["Vero", "Falso"],
+    correct: ["Vero"]
+  },
+  {
+    type: "multiple",
+    question: "Google è nato nel:",
+    options: [
+      "2008",
+      "2018",
+      "1998",
+      "1988"
+    ],
+    correct: ["1998"]
+  },
+  {
+    type: "multiple",
+    question: "Nel motore di ricerca gli algoritmi generano la:",
+    options: [
+      "SERP",
+      "STERP",
+      "SIERP",
+      "SOREP"
+    ],
+    correct: ["SERP"]
+  },
+  {
+    type: "multiple",
+    question: "SERP significa:",
+    options: [
+      "Search External Replay Pages",
+      "Search Engine Result Priority",
+      "Search Engine Result Pages",
+      "Stop Engine Result Pages"
+    ],
+    correct: ["Search Engine Result Pages"]
+  },		
+		// AGGIUNGI QUI TUTTE LE DOMANDE ESTRATTE
+        ];
+
+        function generateQuiz() {
+            const quizContainer = document.getElementById("quiz");
+            quizContainer.innerHTML = ""; 
+
+            // Prendi 30 domande casuali dal set totale
+            questions.length = 0; // Svuota l'array delle domande attuali
+            questions.push(...allQuestions.sort(() => 0.5 - Math.random()).slice(0, 30));
+
+            // Genera le domande nel DOM
+            questions.forEach((q, index) => {
+                let questionHTML = `<div class="question" id="question${index}">${index + 1}. ${q.question}</div>`;
+
+                if (q.type === "multiple") {
+                    q.options.forEach(option => {
+                        questionHTML += `
+                            <label>
+                                <input type="checkbox" name="question${index}" value="${option}"> ${option}
+                            </label><br>
+                        `;
+                    });
+                } else if (q.type === "truefalse") {
+                    q.options.forEach(option => {
+                        questionHTML += `
+                            <label>
+                                <input type="radio" name="question${index}" value="${option}"> ${option}
+                            </label><br>
+                        `;
+                    });
+                }
+
+                quizContainer.innerHTML += questionHTML;
+            });
+
+            document.getElementById("result").innerHTML = ""; 
+        }
+
+        function checkAnswers() {
+            let resultHTML = "";
+            let correctCount = 0;
+
+            questions.forEach((q, index) => {
+                const questionDiv = document.getElementById(`question${index}`);
+                let selectedOptions = Array.from(document.querySelectorAll(`input[name="question${index}"]:checked`))
+                    .map(input => input.value);
+
+                let isCorrect = arraysEqual(selectedOptions, q.correct);
+                if (isCorrect) {
+                    correctCount++;
+                    questionDiv.classList.add("correct");
+                    questionDiv.classList.remove("wrong");
+                } else {
+                    questionDiv.classList.add("wrong");
+                    questionDiv.classList.remove("correct");
+                }
+
+                resultHTML += `<div class="${isCorrect ? "correct" : "wrong"}">
+                    ${index + 1}. ${q.question} - ${isCorrect ? "Corretto ✅" : "Sbagliato ❌"}
+                </div>`;
+            });
+
+            document.getElementById("result").innerHTML = `
+                <p>Hai risposto correttamente a ${correctCount} su ${questions.length} domande.</p>
+                ${resultHTML}
+            `;
+        }
+
+        function arraysEqual(a, b) {
+            return a.length === b.length && a.sort().toString() === b.sort().toString();
+        }
+
+        // Genera il quiz alla prima apertura della pagina
+        generateQuiz();
+    </script>
+</body>
+</html>
+
